@@ -12,6 +12,9 @@ let socket;
 const Chat = ({ location }) => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
+    const [message, setMessage] = useState('');
+    const [messages, setMessages] = useState([]);
+
     const ENDPOINT = 'localhost:5000'
 
 
@@ -23,13 +26,46 @@ const Chat = ({ location }) => {
         setName(name);
         setRoom(room);
 
-        socket.emit('join', { name, room })
+        //Sending {name, room} and callback funtion () to sever
+        socket.emit('join', { name, room }, () => {
+
+        });
+
+        //Unmounts component
+        return () => {
+            socket.emit('disconnect');
+            socket.off();
+        }
 
     }, [ENDPOINT, location.search]) //Only updates when ENDPOINT or location.search change
 
 
+    useEffect(() => {
+        socket.on('message', (message) => {
+            setMessages([...messages, message]); //Add the message to the messages array
+        })
+    }, [messages])
+
+    //Function of sending messages
+    const sendMessage = (event) => {
+        event.preventDefault()
+
+        if (message) {
+            socket.emit('sendMessage', message, () => {
+                setMessage('');
+            })
+        }
+    }
+
+    console.log(message, messages);
+
     return (
-        <h1>Chat</h1>
+        <div className="outerContainer">
+            <div className="container">
+                <input value={message} onChange={(e) => setMessage(e.target.value)}
+                    onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null} />
+            </div>
+        </div>
     )
 }
 
