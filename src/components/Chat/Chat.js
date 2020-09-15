@@ -6,6 +6,7 @@ import './Chat.css'
 
 import InfoBar from './../InfoBar/InfoBar'
 import Input from './../Input/Input'
+import Messages from './../Messages/Messages'
 
 
 let socket;
@@ -30,8 +31,10 @@ const Chat = ({ location }) => {
         setRoom(room);
 
         //Sending {name, room} and callback funtion () to sever
-        socket.emit('join', { name, room }, () => {
-
+        socket.emit('join', { name, room }, (error) => {
+            if (error) {
+                alert(error)
+            }
         });
 
         //Unmounts component
@@ -66,6 +69,8 @@ const Chat = ({ location }) => {
         <div className="outerContainer">
             <div className="container">
                 <InfoBar room={room} />
+
+                <Messages messages={messages} name={name} />
 
 
 
