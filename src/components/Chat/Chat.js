@@ -24,7 +24,7 @@ const Chat = ({ location }) => {
     const [messages, setMessages] = useState([]);
 
     const history = useHistory()
-    const ENDPOINT = 'localhost:5000'
+    const ENDPOINT = 'https://chatrr-backend.herokuapp.com/'
 
 
     useEffect(() => {
