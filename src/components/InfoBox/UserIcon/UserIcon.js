@@ -1,4 +1,6 @@
 import React from 'react'
+import { Popup } from 'semantic-ui-react'
+
 
 import './UserIcon.css'
 
@@ -7,8 +9,11 @@ export default function UserIcon({ name }) {
     initials = ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
 
     return (
-        <div className="avatar-circle">
-            <span className="initials">{initials}</span>
+        <div>
+            <Popup content={name} trigger={<div className="avatar-circle">
+                <span className="initials">{initials}</span>
+            </div>} />
         </div>
+
     )
 }

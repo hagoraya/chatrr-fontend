@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import queryString from 'query-string' //Retrieve data from url 
 import io from 'socket.io-client'
 import { useHistory } from 'react-router-dom'
-import { Container, Grid, } from 'semantic-ui-react'
+import { Container, Grid, Segment, } from 'semantic-ui-react'
 
 
 import './Chat.css'
@@ -78,21 +78,14 @@ const Chat = ({ location }) => {
     console.log(messages);
 
     return (
-
-        <Grid centered rows={2}>
-            <Grid.Row centered >
+        <div className="outerContainer">
+            <div className="container">
                 <InfoBox users={users} />
-
                 <InfoBar room={room} />
                 <Messages messages={messages} name={name} />
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
-            </Grid.Row>
-
-        </Grid>
-
-
-
-
+            </div>
+        </div>
 
 
 
