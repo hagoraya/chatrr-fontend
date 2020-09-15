@@ -1,0 +1,18 @@
+.avatar-circle {
+	width: 3rem;
+	height: 3rem;
+	background-color: #aafcb8;
+	text-align: center;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+}
+
+.initials {
+	position: relative;
+	top: 0.75rem; /* 25% of parent */
+	font-size: 1.5rem; /* 50% of parent */
+	line-height: 1.5rem; /* 50% of parent */
+	color: #291f1e;
+	font-weight: 100;
+}
