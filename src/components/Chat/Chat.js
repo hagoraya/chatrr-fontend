@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import queryString from 'query-string' //Retrieve data from url 
 import io from 'socket.io-client'
 import { useHistory } from 'react-router-dom'
-import { Container, Grid, Segment, } from 'semantic-ui-react'
 
 
 import './Chat.css'
@@ -50,7 +49,7 @@ const Chat = ({ location }) => {
             socket.off();
         }
 
-    }, [ENDPOINT, location.search]) //Only updates when ENDPOINT or location.search change
+    }, [ENDPOINT, history, location.search]) //Only updates when ENDPOINT or location.search change
 
 
     useEffect(() => {
@@ -75,7 +74,6 @@ const Chat = ({ location }) => {
         }
     }
 
-    console.log(messages);
 
     return (
         <div className="outerContainer">

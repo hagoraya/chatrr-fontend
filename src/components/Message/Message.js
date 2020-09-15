@@ -21,7 +21,7 @@ export default function Message({ message: { user, text }, name }) {
             </div>
         ) : (
                 <div className="messageContainer justifyStart">
-                    <div className="messageBox" backgroundLight>
+                    <div className="messageBox backgroundLight" >
                         <p className="messageText colorDark">{text}</p>
                     </div>
                     <p className="sentText pl-10">{user}</p>

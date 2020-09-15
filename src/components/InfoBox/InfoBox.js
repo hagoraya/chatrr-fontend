@@ -5,7 +5,6 @@ import UserIcon from './UserIcon/UserIcon'
 import './InfoBox.css'
 
 export default function InfoBox({ users }) {
-    console.log(users)
     return (
         <div className="infoBox">
             {
